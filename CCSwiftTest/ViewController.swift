@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ARKit
 import RealityKit
 import Combine
 
@@ -27,13 +28,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        arView.session.delegate = self
+        
         loadModel(.wateringCan)
-        
-        // Load the "Box" scene from the "Experience" Reality File
-        let boxAnchor = try! Experience.loadBox()
-        
-        // Add the box anchor to the scene
-        arView.scene.anchors.append(boxAnchor)
     }
     
     private func loadModel(_ location: ModelLocation) {
@@ -53,10 +50,59 @@ class ViewController: UIViewController {
     }
     
     private func dropModelInScene() {
-        guard let model = object3D, let anchor = arView.scene.anchors.first else {
+        guard let model = object3D else {
             return
         }
-        anchor.addChild(model)
+
+        // Load the "Box" scene from the "Experience" Reality File
+        let boxAnchor = try! Experience.loadBox()
+        
+        // Add the box anchor to the scene
+        arView.scene.anchors.append(boxAnchor)
+
+        // Add the model to the box anchor
+        boxAnchor.addChild(model)
+    }
+}
+
+extension ViewController: ARSessionDelegate {
+    func session(_ session: ARSession, didUpdate frame: ARFrame) {
+        guard let frame = session.currentFrame else { return }
+        updateSessionInfoLabel(for: frame, trackingState: frame.camera.trackingState)
     }
     
+    private func updateSessionInfoLabel(for frame: ARFrame, trackingState: ARCamera.TrackingState) {
+        // Update the UI to provide feedback on the state of the AR experience.
+        let message: String
+
+        switch trackingState {
+        case .normal where frame.anchors.isEmpty:
+            // No planes detected; provide instructions for this app's AR interactions.
+            message = "Move the device around to detect horizontal and vertical surfaces."
+            
+        case .notAvailable:
+            message = "Tracking unavailable."
+            
+        case .limited(.excessiveMotion):
+            message = "Tracking limited - Move the device more slowly."
+            
+        case .limited(.insufficientFeatures):
+            message = "Tracking limited - Point the device at an area with visible surface detail, or improve lighting conditions."
+            
+        case .limited(.initializing):
+            message = "Initializing AR session."
+            
+        default:
+            // No feedback needed when tracking is normal and planes are visible.
+            // (Nor when in unreachable limited-tracking states.)
+            message = ""
+
+        }
+        if !message.isEmpty {
+            print(message)
+        }
+//        sessionInfoLabel.text = message
+//        sessionInfoView.isHidden = message.isEmpty
+    }
+
 }
