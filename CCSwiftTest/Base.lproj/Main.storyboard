@@ -2,8 +2,9 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -11,17 +12,85 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" userLabel="ARView" customClass="ViewController" customModule="CCSwiftTest" customModuleProvider="target" sceneMemberID="viewController">
-                    <arView key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="U4J-A0-eZa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </arView>
+                        <subviews>
+                            <arView multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ct8-vc-41W">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            </arView>
+                            <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aRf-kM-Xz3">
+                                <rect key="frame" x="16" y="792" width="190" height="38"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="m5v-l6-QCU">
+                                    <rect key="frame" x="0.0" y="0.0" width="190" height="38"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Initializing AR session." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lju-ft-NTq">
+                                            <rect key="frame" x="8" y="8" width="168" height="22"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="200" id="3Ot-2v-idU"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="50F-Jp-YxP"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Lju-ft-NTq" firstAttribute="top" secondItem="m5v-l6-QCU" secondAttribute="top" constant="8" id="6zT-uH-bfP"/>
+                                        <constraint firstItem="Lju-ft-NTq" firstAttribute="leading" secondItem="m5v-l6-QCU" secondAttribute="leading" constant="8" id="FCg-2a-62r"/>
+                                        <constraint firstAttribute="bottom" secondItem="Lju-ft-NTq" secondAttribute="bottom" constant="8" id="e1B-kd-j6G"/>
+                                        <constraint firstAttribute="trailing" secondItem="Lju-ft-NTq" secondAttribute="trailing" constant="14" id="g4b-qf-0N5"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="light"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </visualEffectView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VJA-vw-rHg" userLabel="cameraButton">
+                                <rect key="frame" x="314" y="750" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="BL9-Wl-Vtb"/>
+                                    <constraint firstAttribute="height" constant="80" id="UBz-rU-bIh"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="camerabutton"/>
+                                <connections>
+                                    <action selector="didTapSnapShotButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UNr-Im-Kmy"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vvv-qh-Cwp"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vvv-qh-Cwp" firstAttribute="bottom" secondItem="VJA-vw-rHg" secondAttribute="bottom" constant="32" id="3IV-M0-qf0"/>
+                            <constraint firstItem="ct8-vc-41W" firstAttribute="centerX" secondItem="vvv-qh-Cwp" secondAttribute="centerX" id="DTV-lj-tTH"/>
+                            <constraint firstItem="ct8-vc-41W" firstAttribute="width" secondItem="vvv-qh-Cwp" secondAttribute="width" id="QO7-TI-19S"/>
+                            <constraint firstItem="vvv-qh-Cwp" firstAttribute="bottom" secondItem="aRf-kM-Xz3" secondAttribute="bottom" constant="32" id="Zqb-zM-baD"/>
+                            <constraint firstItem="aRf-kM-Xz3" firstAttribute="leading" secondItem="vvv-qh-Cwp" secondAttribute="leading" constant="16" id="p09-Ip-2Zf"/>
+                            <constraint firstItem="vvv-qh-Cwp" firstAttribute="trailing" secondItem="VJA-vw-rHg" secondAttribute="trailing" constant="20" id="q4L-Mp-C4d"/>
+                            <constraint firstItem="ct8-vc-41W" firstAttribute="height" secondItem="vvv-qh-Cwp" secondAttribute="height" id="w0N-LP-gdB"/>
+                            <constraint firstItem="ct8-vc-41W" firstAttribute="centerY" secondItem="vvv-qh-Cwp" secondAttribute="centerY" id="wfa-7u-IZ2"/>
+                        </constraints>
+                    </view>
                     <connections>
-                        <outlet property="arView" destination="8bC-Xf-vdC" id="TPV-4x-avp"/>
+                        <outlet property="arView" destination="ct8-vc-41W" id="BN8-DK-5OH"/>
+                        <outlet property="cameraButton" destination="VJA-vw-rHg" id="OVQ-C6-hqk"/>
+                        <outlet property="sessionInfoLabel" destination="Lju-ft-NTq" id="xj9-aH-c3P"/>
+                        <outlet property="sessionInfoView" destination="aRf-kM-Xz3" id="D0c-J8-mOc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138" y="134"/>
+            <point key="canvasLocation" x="137.68115942028987" y="133.92857142857142"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="camerabutton" width="456" height="455"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

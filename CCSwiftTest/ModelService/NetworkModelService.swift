@@ -9,17 +9,35 @@ import Foundation
 import RealityKit
 import Combine
 
+extension Object3D {
+    var networkUrl: URL? {
+        switch self {
+        case .wateringCan:
+            return URL(string: "https://github.com/CubiCasa/CCSwiftTest/blob/master/wateringcan.usdz?raw=true")
+        }
+    }
+}
+
+enum NetworkModelServiceError: Error {
+    case invalidURL
+    case unknown
+}
+
 class NetworkModelService: ModelService {
     private var downloadTask: URLSessionTask? = nil
 
-    func loadModel(atUrl url: URL, resultHandler: @escaping (Result<Entity, Error>) -> ()) {
+    func loadModel(_ object3D: Object3D, resultHandler: @escaping (Result<Entity, Error>) -> ()) {
+        guard let url = object3D.networkUrl else {
+            resultHandler(.failure(NetworkModelServiceError.invalidURL))
+            return
+        }
         downloadTask = URLSession(configuration: .default).downloadTask(with: url) {(resultUrl, response, error) in
             self.downloadTask = nil
             guard let localUrl = resultUrl else {
                 if let err = error {
                     resultHandler(.failure(err))
                 } else {
-                    resultHandler(.failure(UnknownError.unknown))
+                    resultHandler(.failure(NetworkModelServiceError.unknown))
                 }
                 return
             }

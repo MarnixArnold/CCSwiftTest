@@ -8,10 +8,10 @@
 import Foundation
 import RealityKit
 
-enum UnknownError: Error {
-    case unknown
+enum Object3D {
+    case wateringCan
 }
 
 protocol ModelService {
-    func loadModel(atUrl url: URL, resultHandler: @escaping (Result<Entity, Error>) -> ())
+    func loadModel(_ object3D: Object3D, resultHandler: @escaping (Result<Entity, Error>) -> ())
 }

@@ -6,9 +6,9 @@
 //
 
 import UIKit
-import ARKit
+import RealityKit
 
 struct SnapShot {
     let image: UIImage
-    let originatingPosition: ARAnchor
+    let cameraTransform: Transform
 }
