@@ -15,10 +15,9 @@ class SnapShotViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         if let x = snapShot?.cameraTransform.translation.x,
            let y = snapShot?.cameraTransform.translation.z {
-            navigationItem.title = String(format: "(%1.5f,%1.5f)", x, y)
+            navigationItem.title = String(format: "(%1.5f, %1.5f)", x, y)
         }
         imageView.image = snapShot?.image
     }

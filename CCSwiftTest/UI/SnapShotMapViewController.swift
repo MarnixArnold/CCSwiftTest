@@ -33,11 +33,27 @@ class SnapShotMapViewController: BaseViewController {
             switch result {
             case .success(let snapshots):
                 self?.snapShots = snapshots
-                self?.drawSnapShots()
+                self?.view.setNeedsLayout()
             case .failure(let error):
                 print("Error loading snapshots: \(error.localizedDescription)")
                 self?.dismiss(animated: true, completion: nil)
             }
+        }
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        clearSnapShots()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        drawSnapShots()
+    }
+    
+    private func clearSnapShots() {
+        mapView.subviews.forEach { (subview) in
+            subview.removeFromSuperview()
         }
     }
     
@@ -55,7 +71,7 @@ class SnapShotMapViewController: BaseViewController {
             return
         }
         
-        // make the points cloud fill the map view, so we need to compute the scale
+        // Let's make the points cloud fill the map view, so we need to compute the scale
         let minXSnapShot = snapShots.min { $0.cameraTransform.translation.x < $1.cameraTransform.translation.x }
         let maxXSnapShot = snapShots.max { $0.cameraTransform.translation.x < $1.cameraTransform.translation.x }
         let minYSnapShot = snapShots.min { $0.cameraTransform.translation.z < $1.cameraTransform.translation.z }
@@ -67,18 +83,13 @@ class SnapShotMapViewController: BaseViewController {
             return
         }
         
-        print("Min \(minX),\(minY)")
-        print("Max \(maxX),\(maxY)")
-
         let diffX = maxX - minX
         let diffY = maxY - minY
-                
         var tag = 0
         snapShots.forEach { (snapShot) in
-            // Normalize, shift and scale
+            // Shift, normalize and scale
             let normX = (snapShot.cameraTransform.translation.x - minX) / diffX
             let normY = (snapShot.cameraTransform.translation.z - minY) / diffY
-            print("normalized \(normX),\(normY)")
             let x: CGFloat = CGFloat(normX) * viewWidth
             let y: CGFloat = CGFloat(normY) * viewHeight
             placeDotView(x: x, y: y, tag: tag)
@@ -86,9 +97,9 @@ class SnapShotMapViewController: BaseViewController {
         }
     }
     
-    private let pointsize: CGFloat = 32
     private func placeDotView(x: CGFloat, y: CGFloat, tag: Int) {
         print("Placing dot at (\(x),\(y))")
+        let pointsize: CGFloat = 32
         let dotView = UIView(frame: CGRect(x: x-pointsize/2,
                                            y: y-pointsize/2,
                                            width: pointsize,

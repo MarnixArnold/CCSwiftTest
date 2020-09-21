@@ -125,10 +125,9 @@
 			children = (
 				60117A422517963000C1998E /* ModelService */,
 				60117A2325177CC300C1998E /* SnapShotService */,
+				60117A532517C36900C1998E /* UI */,
 				601179E2251768AE00C1998E /* AppDelegate.swift */,
 				60117A662518F50E00C1998E /* ClassWiring.swift */,
-				60117A7C25191BA600C1998E /* UIViewController+fromNib.swift */,
-				60117A532517C36900C1998E /* UI */,
 				601179E6251768AF00C1998E /* Experience.rcproject */,
 				601179EB251768B100C1998E /* Assets.xcassets */,
 				601179F0251768B100C1998E /* Info.plist */,
@@ -177,13 +176,14 @@
 			isa = PBXGroup;
 			children = (
 				601179E4251768AE00C1998E /* ARViewController.swift */,
+				60117A772519177900C1998E /* BaseViewController.swift */,
+				601179ED251768B100C1998E /* LaunchScreen.storyboard */,
 				601179E8251768AF00C1998E /* Main.storyboard */,
 				60117A5F2518F33400C1998E /* SnapShotMapViewController.swift */,
 				60117A602518F33400C1998E /* SnapShotMapViewController.xib */,
 				60117A6D2519164700C1998E /* SnapShotViewController.swift */,
 				60117A6E2519164700C1998E /* SnapShotViewController.xib */,
-				60117A772519177900C1998E /* BaseViewController.swift */,
-				601179ED251768B100C1998E /* LaunchScreen.storyboard */,
+				60117A7C25191BA600C1998E /* UIViewController+fromNib.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
