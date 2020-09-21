@@ -10,26 +10,40 @@ import ARKit
 import RealityKit
 import Combine
 
-class ViewController: UIViewController {
-    
+class ARViewController: UIViewController {
+
     @IBOutlet var arView: ARView!
     @IBOutlet weak var sessionInfoView: UIVisualEffectView!
     @IBOutlet weak var sessionInfoLabel: UILabel!
+    @IBOutlet weak var galleryButton: UIButton!
     @IBOutlet weak var cameraButton: UIButton!
+    @IBOutlet weak var dropButton: UIButton!
     
-    // TODO: do proper dependency injection with e.g. Resolver
-    private var modelService: ModelService = NetworkModelService()
-    private var snapShotService: SnapShotService = MemorySnapShotService()
+    private var modelService = ClassWiring.ModelService
+    private var snapShotService = ClassWiring.SnapShotService
     
     // The object that we want to add to our scene
     private var objectEntity: Entity? = nil
+    private var objectWasDropped = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         arView.session.delegate = self
         
+        setupDropButton()
+        dropButton.isHidden = true
+        cameraButton.isHidden = true
+        galleryButton.isHidden = true
+        
         loadModel(.wateringCan)
+    }
+    
+    private func setupDropButton() {
+        // Some visual tweaks that are easier in code
+        dropButton.backgroundColor = UIColor.blue
+        dropButton.tintColor = UIColor.white
+        dropButton.layer.cornerRadius = dropButton.frame.size.width / 2
     }
     
     private func loadModel(_ model: Object3D) {
@@ -38,7 +52,7 @@ class ViewController: UIViewController {
             case .success(let model):
                 self?.objectEntity = model
                 print("Model loaded successfully")
-                self?.dropModelInScene()
+                self?.dropButton.isHidden = false
             case .failure(let error):
                 print("Error loading model: \(error.localizedDescription)")
             }
@@ -58,6 +72,15 @@ class ViewController: UIViewController {
 
         // Add the model to the box anchor
         boxAnchor.addChild(model)
+        
+        objectWasDropped = true
+        self.dropButton.isHidden = true
+    }
+    
+    @IBAction func didTapDropButton(_ sender: Any) {
+        if !objectWasDropped {
+            dropModelInScene()
+        }
     }
     
     @IBAction func didTapSnapShotButton(_ sender: Any) {
@@ -72,15 +95,22 @@ class ViewController: UIViewController {
                 switch result {
                 case .success:
                     print("Snapshot saved")
+                    self.galleryButton.isHidden = false
                 case .failure(let error):
                     print("Snapshot not saved: \(error.localizedDescription)")
                 }                
             }
         }
     }
+    
+    @IBAction func didTapGalleryButton(_ sender: Any) {
+        let snapShotMapViewController: SnapShotMapViewController = SnapShotMapViewController.fromNib()
+        let navController = UINavigationController(rootViewController: snapShotMapViewController)
+        present(navController, animated: true, completion: nil)
+    }
 }
 
-extension ViewController: ARSessionDelegate {
+extension ARViewController: ARSessionDelegate {
     
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
         guard let frame = session.currentFrame else { return }
@@ -105,7 +135,7 @@ extension ViewController: ARSessionDelegate {
             message = "Initializing AR session."
         case .normal:
             message = ""
-            cameraButton.isHidden = false
+            cameraButton.isHidden = !objectWasDropped
         default:
             // No feedback needed when tracking is normal and planes are visible.
             // (Nor when in unreachable limited-tracking states.)

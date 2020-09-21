@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		601179E3251768AE00C1998E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601179E2251768AE00C1998E /* AppDelegate.swift */; };
-		601179E5251768AE00C1998E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601179E4251768AE00C1998E /* ViewController.swift */; };
+		601179E5251768AE00C1998E /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601179E4251768AE00C1998E /* ARViewController.swift */; };
 		601179E7251768AF00C1998E /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 601179E6251768AF00C1998E /* Experience.rcproject */; };
 		601179EA251768AF00C1998E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 601179E8251768AF00C1998E /* Main.storyboard */; };
 		601179EC251768B100C1998E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 601179EB251768B100C1998E /* Assets.xcassets */; };
@@ -20,6 +20,13 @@
 		60117A3225177E3A00C1998E /* MemorySnapShotService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60117A3125177E3A00C1998E /* MemorySnapShotService.swift */; };
 		60117A442517965000C1998E /* ModelService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60117A432517965000C1998E /* ModelService.swift */; };
 		60117A49251796F900C1998E /* NetworkModelService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60117A48251796F900C1998E /* NetworkModelService.swift */; };
+		60117A612518F33400C1998E /* SnapShotMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60117A5F2518F33400C1998E /* SnapShotMapViewController.swift */; };
+		60117A622518F33400C1998E /* SnapShotMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60117A602518F33400C1998E /* SnapShotMapViewController.xib */; };
+		60117A672518F50E00C1998E /* ClassWiring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60117A662518F50E00C1998E /* ClassWiring.swift */; };
+		60117A6F2519164700C1998E /* SnapShotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60117A6D2519164700C1998E /* SnapShotViewController.swift */; };
+		60117A702519164700C1998E /* SnapShotViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60117A6E2519164700C1998E /* SnapShotViewController.xib */; };
+		60117A782519177900C1998E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60117A772519177900C1998E /* BaseViewController.swift */; };
+		60117A7D25191BA600C1998E /* UIViewController+fromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60117A7C25191BA600C1998E /* UIViewController+fromNib.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +49,7 @@
 /* Begin PBXFileReference section */
 		601179DF251768AE00C1998E /* CCSwiftTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CCSwiftTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		601179E2251768AE00C1998E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		601179E4251768AE00C1998E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		601179E4251768AE00C1998E /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		601179E6251768AF00C1998E /* Experience.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Experience.rcproject; sourceTree = "<group>"; };
 		601179E9251768AF00C1998E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		601179EB251768B100C1998E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -59,6 +66,13 @@
 		60117A3125177E3A00C1998E /* MemorySnapShotService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorySnapShotService.swift; sourceTree = "<group>"; };
 		60117A432517965000C1998E /* ModelService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelService.swift; sourceTree = "<group>"; };
 		60117A48251796F900C1998E /* NetworkModelService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModelService.swift; sourceTree = "<group>"; };
+		60117A5F2518F33400C1998E /* SnapShotMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapShotMapViewController.swift; sourceTree = "<group>"; };
+		60117A602518F33400C1998E /* SnapShotMapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SnapShotMapViewController.xib; sourceTree = "<group>"; };
+		60117A662518F50E00C1998E /* ClassWiring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassWiring.swift; sourceTree = "<group>"; };
+		60117A6D2519164700C1998E /* SnapShotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapShotViewController.swift; sourceTree = "<group>"; };
+		60117A6E2519164700C1998E /* SnapShotViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SnapShotViewController.xib; sourceTree = "<group>"; };
+		60117A772519177900C1998E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		60117A7C25191BA600C1998E /* UIViewController+fromNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+fromNib.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,11 +126,11 @@
 				60117A422517963000C1998E /* ModelService */,
 				60117A2325177CC300C1998E /* SnapShotService */,
 				601179E2251768AE00C1998E /* AppDelegate.swift */,
-				601179E4251768AE00C1998E /* ViewController.swift */,
+				60117A662518F50E00C1998E /* ClassWiring.swift */,
+				60117A7C25191BA600C1998E /* UIViewController+fromNib.swift */,
+				60117A532517C36900C1998E /* UI */,
 				601179E6251768AF00C1998E /* Experience.rcproject */,
-				601179E8251768AF00C1998E /* Main.storyboard */,
 				601179EB251768B100C1998E /* Assets.xcassets */,
-				601179ED251768B100C1998E /* LaunchScreen.storyboard */,
 				601179F0251768B100C1998E /* Info.plist */,
 			);
 			path = CCSwiftTest;
@@ -157,6 +171,21 @@
 				60117A48251796F900C1998E /* NetworkModelService.swift */,
 			);
 			path = ModelService;
+			sourceTree = "<group>";
+		};
+		60117A532517C36900C1998E /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				601179E4251768AE00C1998E /* ARViewController.swift */,
+				601179E8251768AF00C1998E /* Main.storyboard */,
+				60117A5F2518F33400C1998E /* SnapShotMapViewController.swift */,
+				60117A602518F33400C1998E /* SnapShotMapViewController.xib */,
+				60117A6D2519164700C1998E /* SnapShotViewController.swift */,
+				60117A6E2519164700C1998E /* SnapShotViewController.xib */,
+				60117A772519177900C1998E /* BaseViewController.swift */,
+				601179ED251768B100C1998E /* LaunchScreen.storyboard */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,7 +293,9 @@
 			files = (
 				601179EF251768B100C1998E /* LaunchScreen.storyboard in Resources */,
 				601179EC251768B100C1998E /* Assets.xcassets in Resources */,
+				60117A702519164700C1998E /* SnapShotViewController.xib in Resources */,
 				601179EA251768AF00C1998E /* Main.storyboard in Resources */,
+				60117A622518F33400C1998E /* SnapShotMapViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,12 +322,17 @@
 			files = (
 				60117A49251796F900C1998E /* NetworkModelService.swift in Sources */,
 				60117A442517965000C1998E /* ModelService.swift in Sources */,
-				601179E5251768AE00C1998E /* ViewController.swift in Sources */,
+				60117A612518F33400C1998E /* SnapShotMapViewController.swift in Sources */,
+				601179E5251768AE00C1998E /* ARViewController.swift in Sources */,
+				60117A6F2519164700C1998E /* SnapShotViewController.swift in Sources */,
+				60117A782519177900C1998E /* BaseViewController.swift in Sources */,
+				60117A672518F50E00C1998E /* ClassWiring.swift in Sources */,
 				60117A2525177CE100C1998E /* SnapShot.swift in Sources */,
 				60117A3225177E3A00C1998E /* MemorySnapShotService.swift in Sources */,
 				60117A2D25177DE500C1998E /* SnapShotService.swift in Sources */,
 				601179E3251768AE00C1998E /* AppDelegate.swift in Sources */,
 				601179E7251768AF00C1998E /* Experience.rcproject in Sources */,
+				60117A7D25191BA600C1998E /* UIViewController+fromNib.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

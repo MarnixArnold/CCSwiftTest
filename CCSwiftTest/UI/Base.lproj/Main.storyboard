@@ -11,7 +11,7 @@
         <!--ARView-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" userLabel="ARView" customClass="ViewController" customModule="CCSwiftTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="ARView" customClass="ARViewController" customModule="CCSwiftTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="U4J-A0-eZa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -50,8 +50,26 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </visualEffectView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OsL-yZ-Wx3" userLabel="dropButton">
+                                <rect key="frame" x="167" y="750" width="80" height="80"/>
+                                <state key="normal" title="Button" image="dropbutton"/>
+                                <connections>
+                                    <action selector="didTapDropButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6qS-dW-w29"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qYt-WC-dnh" userLabel="galleryButton">
+                                <rect key="frame" x="302" y="750" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="b2b-7g-bTx"/>
+                                    <constraint firstAttribute="width" constant="80" id="oYf-AI-sh1"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="gallerybutton"/>
+                                <connections>
+                                    <action selector="didTapGalleryButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ybw-GA-i8H"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VJA-vw-rHg" userLabel="cameraButton">
-                                <rect key="frame" x="314" y="750" width="80" height="80"/>
+                                <rect key="frame" x="167" y="750" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="BL9-Wl-Vtb"/>
                                     <constraint firstAttribute="height" constant="80" id="UBz-rU-bIh"/>
@@ -65,12 +83,18 @@
                         <viewLayoutGuide key="safeArea" id="vvv-qh-Cwp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="OsL-yZ-Wx3" firstAttribute="height" secondItem="VJA-vw-rHg" secondAttribute="height" id="24Z-TE-TQb"/>
                             <constraint firstItem="vvv-qh-Cwp" firstAttribute="bottom" secondItem="VJA-vw-rHg" secondAttribute="bottom" constant="32" id="3IV-M0-qf0"/>
                             <constraint firstItem="ct8-vc-41W" firstAttribute="centerX" secondItem="vvv-qh-Cwp" secondAttribute="centerX" id="DTV-lj-tTH"/>
+                            <constraint firstItem="OsL-yZ-Wx3" firstAttribute="centerY" secondItem="VJA-vw-rHg" secondAttribute="centerY" id="Dvt-Yd-RDB"/>
+                            <constraint firstItem="OsL-yZ-Wx3" firstAttribute="centerX" secondItem="VJA-vw-rHg" secondAttribute="centerX" id="Jyd-LG-kYl"/>
                             <constraint firstItem="ct8-vc-41W" firstAttribute="width" secondItem="vvv-qh-Cwp" secondAttribute="width" id="QO7-TI-19S"/>
                             <constraint firstItem="vvv-qh-Cwp" firstAttribute="bottom" secondItem="aRf-kM-Xz3" secondAttribute="bottom" constant="32" id="Zqb-zM-baD"/>
+                            <constraint firstItem="VJA-vw-rHg" firstAttribute="centerX" secondItem="vvv-qh-Cwp" secondAttribute="centerX" id="dFH-hW-xDH"/>
+                            <constraint firstItem="vvv-qh-Cwp" firstAttribute="bottom" secondItem="qYt-WC-dnh" secondAttribute="bottom" constant="32" id="dre-Yp-3a2"/>
+                            <constraint firstItem="OsL-yZ-Wx3" firstAttribute="width" secondItem="VJA-vw-rHg" secondAttribute="width" id="j0q-NI-nRh"/>
+                            <constraint firstItem="vvv-qh-Cwp" firstAttribute="trailing" secondItem="qYt-WC-dnh" secondAttribute="trailing" constant="32" id="jjG-RG-bDu"/>
                             <constraint firstItem="aRf-kM-Xz3" firstAttribute="leading" secondItem="vvv-qh-Cwp" secondAttribute="leading" constant="16" id="p09-Ip-2Zf"/>
-                            <constraint firstItem="vvv-qh-Cwp" firstAttribute="trailing" secondItem="VJA-vw-rHg" secondAttribute="trailing" constant="20" id="q4L-Mp-C4d"/>
                             <constraint firstItem="ct8-vc-41W" firstAttribute="height" secondItem="vvv-qh-Cwp" secondAttribute="height" id="w0N-LP-gdB"/>
                             <constraint firstItem="ct8-vc-41W" firstAttribute="centerY" secondItem="vvv-qh-Cwp" secondAttribute="centerY" id="wfa-7u-IZ2"/>
                         </constraints>
@@ -78,6 +102,8 @@
                     <connections>
                         <outlet property="arView" destination="ct8-vc-41W" id="BN8-DK-5OH"/>
                         <outlet property="cameraButton" destination="VJA-vw-rHg" id="OVQ-C6-hqk"/>
+                        <outlet property="dropButton" destination="OsL-yZ-Wx3" id="Oqm-3Y-z7E"/>
+                        <outlet property="galleryButton" destination="qYt-WC-dnh" id="L1p-bx-UZf"/>
                         <outlet property="sessionInfoLabel" destination="Lju-ft-NTq" id="xj9-aH-c3P"/>
                         <outlet property="sessionInfoView" destination="aRf-kM-Xz3" id="D0c-J8-mOc"/>
                     </connections>
@@ -89,6 +115,8 @@
     </scenes>
     <resources>
         <image name="camerabutton" width="456" height="455"/>
+        <image name="dropbutton" width="512" height="512"/>
+        <image name="gallerybutton" width="1319" height="1318"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
