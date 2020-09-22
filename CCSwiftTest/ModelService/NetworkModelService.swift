@@ -26,7 +26,7 @@ enum NetworkModelServiceError: Error {
 class NetworkModelService: ModelService {
     private var downloadTask: URLSessionTask? = nil
 
-    func loadModel(_ object3D: Object3D, resultHandler: @escaping (Result<Entity, Error>) -> ()) {
+    func loadModel(_ object3D: Object3D, resultHandler: @escaping (Result<ModelEntity, Error>) -> ()) {
         guard let url = object3D.networkUrl else {
             resultHandler(.failure(NetworkModelServiceError.invalidURL))
             return
@@ -59,7 +59,7 @@ class NetworkModelService: ModelService {
             // Entity.loadAsync crashes so we're doing it synchronously, inside this async
             DispatchQueue.main.async {
                 do {
-                    let entity = try Entity.load(contentsOf: modelFileUrl)
+                    let entity = try Entity.loadModel(contentsOf: modelFileUrl)
                     resultHandler(.success(entity))
                 } catch let e {
                     resultHandler(.failure(e))

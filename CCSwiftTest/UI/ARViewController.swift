@@ -66,7 +66,8 @@ class ARViewController: UIViewController {
     }
 
     // The object that we want to add to our scene, after it's loaded
-    private var objectEntity: Entity? = nil
+    private var objectEntity: ModelEntity? = nil
+    private let objectAnchorName = "UserObjectAnchor"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,9 +103,9 @@ class ARViewController: UIViewController {
             state = .error
             return
         }
-        let anchor = try! Experience.loadBox()
-        arView.scene.anchors.append(anchor)
-        anchor.addChild(model)
+        let anchorEntity = AnchorEntity(plane: .horizontal)
+        arView.scene.anchors.append(anchorEntity)
+        anchorEntity.addChild(model)
     }
     
     @IBAction func didTapDropButton(_ sender: Any) {
@@ -154,8 +155,8 @@ extension ARViewController: ARSessionDelegate {
     }
     
     func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {
-        print("Did add \(anchors.count) anchors")
         if state == .droppingObject {
+            print("Did add user object anchor")
             state = .readyToTakeSnapshot
         }
     }

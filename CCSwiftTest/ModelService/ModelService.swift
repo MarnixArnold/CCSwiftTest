@@ -13,5 +13,5 @@ enum Object3D {
 }
 
 protocol ModelService {
-    func loadModel(_ object3D: Object3D, resultHandler: @escaping (Result<Entity, Error>) -> ())
+    func loadModel(_ object3D: Object3D, resultHandler: @escaping (Result<ModelEntity, Error>) -> ())
 }

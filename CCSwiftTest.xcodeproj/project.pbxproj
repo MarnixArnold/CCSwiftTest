@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		601179E3251768AE00C1998E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601179E2251768AE00C1998E /* AppDelegate.swift */; };
 		601179E5251768AE00C1998E /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601179E4251768AE00C1998E /* ARViewController.swift */; };
-		601179E7251768AF00C1998E /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 601179E6251768AF00C1998E /* Experience.rcproject */; };
 		601179EA251768AF00C1998E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 601179E8251768AF00C1998E /* Main.storyboard */; };
 		601179EC251768B100C1998E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 601179EB251768B100C1998E /* Assets.xcassets */; };
 		601179EF251768B100C1998E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 601179ED251768B100C1998E /* LaunchScreen.storyboard */; };
@@ -50,7 +49,6 @@
 		601179DF251768AE00C1998E /* CCSwiftTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CCSwiftTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		601179E2251768AE00C1998E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		601179E4251768AE00C1998E /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
-		601179E6251768AF00C1998E /* Experience.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Experience.rcproject; sourceTree = "<group>"; };
 		601179E9251768AF00C1998E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		601179EB251768B100C1998E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		601179EE251768B100C1998E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -128,7 +126,6 @@
 				60117A532517C36900C1998E /* UI */,
 				601179E2251768AE00C1998E /* AppDelegate.swift */,
 				60117A662518F50E00C1998E /* ClassWiring.swift */,
-				601179E6251768AF00C1998E /* Experience.rcproject */,
 				601179EB251768B100C1998E /* Assets.xcassets */,
 				601179F0251768B100C1998E /* Info.plist */,
 			);
@@ -331,7 +328,6 @@
 				60117A3225177E3A00C1998E /* MemorySnapShotService.swift in Sources */,
 				60117A2D25177DE500C1998E /* SnapShotService.swift in Sources */,
 				601179E3251768AE00C1998E /* AppDelegate.swift in Sources */,
-				601179E7251768AF00C1998E /* Experience.rcproject in Sources */,
 				60117A7D25191BA600C1998E /* UIViewController+fromNib.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
