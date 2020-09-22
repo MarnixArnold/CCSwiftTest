@@ -118,7 +118,7 @@ class ARViewController: UIViewController {
     
     private func takeSnapShot() {
         let cameraTransform = arView.cameraTransform
-        arView.snapshot(saveToHDR: true) { [weak self] (arViewImage) in
+        arView.snapshot(saveToHDR: false) { [weak self] (arViewImage) in
             guard let image = arViewImage else {
                 // Snapshot failed, but we can try again
                 self?.state = .readyToTakeSnapshot
